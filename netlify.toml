@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# The menu is a single page; /dashboard is the hidden management page.
+# /api/* is handled by the Netlify Server (netlify/server/index.ts).
+[[redirects]]
+  from = "/dashboard"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/dashborad"
+  to = "/index.html"
+  status = 200
+
+[server]
+  path = "/api/*"
+
+# Keep the dashboard out of search engines.
+[[headers]]
+  for = "/dashboard"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
